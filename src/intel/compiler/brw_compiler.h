@@ -38,6 +38,15 @@ struct ra_regs;
 struct nir_shader;
 struct brw_program;
 
+struct brw_simd32_heuristics_control {
+   bool grouped_sends_check;
+   int max_grouped_sends;
+   bool inst_count_check;
+   float inst_count_ratio;
+   bool mrt_check;
+   int max_mrts;
+};
+
 struct brw_compiler {
    const struct gen_device_info *devinfo;
 
