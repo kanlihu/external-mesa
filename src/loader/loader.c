@@ -468,7 +468,7 @@ loader_get_driver_for_fd(int fd)
       if (driver)
          return strdup(driver);
    }
-   driver = strdup("iris");
+   return strdup("iris");
 
 #if defined(HAVE_LIBDRM) && defined(USE_DRICONF)
    driver = loader_get_dri_config_driver(fd);
