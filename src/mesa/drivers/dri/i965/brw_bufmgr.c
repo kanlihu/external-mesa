@@ -628,7 +628,6 @@ retry:
          .read_domains = I915_GEM_DOMAIN_CPU,
          .write_domain = 0,
       };
-
       if (drmIoctl(bo->bufmgr->fd, DRM_IOCTL_I915_GEM_SET_DOMAIN, &sd) != 0)
          goto err_free;
    }
@@ -649,9 +648,8 @@ retry:
 
    mtx_unlock(&bufmgr->lock);
 
-   DBG("bo_create: buf %d (%s) %llub\n", bo->gem_handle, bo->name,
+   dbg_printf("bo_create: buf %d (%s) 0x%016llx %llub\n", bo->gem_handle, bo->name, bo->gtt_offset,
        (unsigned long long) size);
-
    return bo;
 
 err_free:
